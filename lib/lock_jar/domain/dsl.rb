@@ -24,7 +24,7 @@ module LockJar
       DEFAULT_GROUP = ['default']
       
       attr_accessor :artifacts, :remote_repositories, :local_repository, :groups,
-                    :maps, :excludes, :merged
+                    :maps, :excludes, :merged, :username, :password
                     
       attr_reader :file_path
       
@@ -135,6 +135,8 @@ module LockJar
   
       def remote_repo( url, opts = {} )
         @remote_repositories << url
+        @username = opts[:username]
+        @password = opts[:password]
       end
       alias_method :remote_repository, :remote_repo
       alias_method :repository, :remote_repo

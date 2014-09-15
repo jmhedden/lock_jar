@@ -373,3 +373,8 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
 
+## Pass Remote Repo Credentials
+To pass credentials to remote repository modify referencing Jarfile 
+
+repository 'https://my.repo', opts = {username:'username', password:'password'}
+

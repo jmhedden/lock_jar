@@ -112,9 +112,15 @@ module LockJar
       end
               
       lockfile = LockJar::Domain::Lockfile.new
-      
+
       jarfile.remote_repositories.each do |repo|
-        resolver(opts).add_remote_repository( repo )
+        if jarfile_or_dsl.is_a? LockJar::Domain::Dsl
+          if (jarfile_or_dsl.username != nil && jarfile_or_dsl.password != nil)
+            resolver(opts).add_remote_repository_credentials( repo, jarfile_or_dsl.username,  jarfile_or_dsl.password)
+          end
+        else
+          resolver(opts).add_remote_repository( repo )
+        end
       end
 
       unless jarfile.local_repository.nil?

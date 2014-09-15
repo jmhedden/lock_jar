@@ -46,8 +46,11 @@ module LockJar
     def add_remote_repository( repo )
       @naether.add_remote_repository( repo )
     end
-    
-    
+
+    def add_remote_repository_credentials( repo, username, password )
+      @naether.add_remote_repository( repo, username, password )
+    end
+
     def resolve( dependencies, download_artifacts = true )
       @naether.dependencies = dependencies
       @naether.resolve_dependencies( download_artifacts )
